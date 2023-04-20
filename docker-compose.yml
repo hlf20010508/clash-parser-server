@@ -1,0 +1,8 @@
+version: '3'
+services:
+  clash-parser-server:
+    container_name: clash-parser-server
+    image: hlf01/clash-parser-server
+    restart: always
+    network_mode: host
+    command: flask run -p 8080 -h 0.0.0.0

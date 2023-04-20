@@ -5,7 +5,6 @@ from io import BytesIO
 
 app = Flask(__name__)
 
-
 # http://example.com/?url=https://your_proxy.com/...
 @app.route("/", methods=["GET"])
 def index():
@@ -19,9 +18,11 @@ def index():
 
     profile_io = BytesIO(profile.encode())
 
-    response = make_response(send_file(profile_io))
+    response = make_response(
+        send_file(profile_io, as_attachment=True, download_name="clash.yaml")
+    )
     response.headers["Subscription-Userinfo"] = client.headers["Subscription-Userinfo"]
-    response.headers["Content-Disposition"] = client.headers["Content-Disposition"]
+    response.headers["Content-Disposition"] = client.headers['Content-Disposition']
     response.headers["Content-Type"] = client.headers["Content-Type"]
     response.headers["Cache-Control"] = client.headers["Cache-Control"]
     return response

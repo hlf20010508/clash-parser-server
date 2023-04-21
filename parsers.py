@@ -3,6 +3,7 @@ rules = [
     "DOMAIN-SUFFIX,cnki.net,DIRECT",
     "DOMAIN-SUFFIX,mail.icloud.com.cn,🔰国外流量",
     "DOMAIN-SUFFIX,events.data.microsoft.com,🔰国外流量",
+    "DOMAIN-SUFFIX,ieee.org,🔰国外流量",
     "DOMAIN-SUFFIX,googlevideo.com,🎬Youtube",
     "DOMAIN-SUFFIX,ytimg.com,🎬Youtube",
     "DOMAIN-SUFFIX,ggpht.com,🎬Youtube",

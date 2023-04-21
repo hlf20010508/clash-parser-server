@@ -9,6 +9,20 @@ Parse clash configuration for those clash clients which don't support parsers.
 - PyYAML
 
 ## Usage
+
+### Notice
+If your plan to use github gist to restore your parsers file, there's something you should know.
+
+Github gist file row url is like
+
+`https://gist.githubusercontent.com/{user}/{gist_hash}/raw/{commit_hash}/{file}`
+
+If you use this url as your `parsers_url`, you won't get the latest version of your file.
+
+What you should do is to omit the `{commit_hash}` like
+
+`https://gist.githubusercontent.com/{user}/{gist_hash}/raw/{file}`
+
 ### Deploy through docker
 Edit `parsers_url` in `docker-compose.yml` and deploy using docker-compose.
 Or add it to your docker-compose configuration.

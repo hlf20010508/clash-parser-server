@@ -1,7 +1,11 @@
 from clash_parser import Clash_Parser
-from parsers import rules, proxy_groups, in_group_proxies
 from flask import Flask, request, send_file, make_response
 from io import BytesIO
+import json
+import os
+import requests
+
+parsers_url = os.environ['parsers_url']
 
 app = Flask(__name__)
 
@@ -10,10 +14,13 @@ app = Flask(__name__)
 def index():
     url = request.args.get("url")
 
+    parsers_response = requests.get(parsers_url)
+    parsers = json.loads(parsers_response.content)
+
     client = Clash_Parser(url)
-    client.prepend_rules(rules)
-    client.append_proxy_groups(proxy_groups)
-    client.set_proxies_in_group(in_group_proxies)
+    client.prepend_rules(parsers["rules"])
+    client.append_proxy_groups(parsers["proxy_groups"])
+    client.set_proxies_in_group(parsers["in_group_proxies"])
     profile = client.dump_profile()
 
     profile_io = BytesIO(profile.encode())

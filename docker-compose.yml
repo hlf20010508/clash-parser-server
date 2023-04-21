@@ -6,3 +6,5 @@ services:
     restart: always
     network_mode: host
     command: flask run -p 8080 -h 0.0.0.0
+    environment:
+      - parsers_url=$YOUR_PARSERS_URL
